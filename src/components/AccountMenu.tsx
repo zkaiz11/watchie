@@ -17,6 +17,7 @@ const AccountMenu: React.FC<AccountMenuProps> = ({ visible, username }) => {
   }
 
   const signout = () => {
+    console.log(`${accessToken}sadasfaf`)
     setAccessToken('');
     nav('/', {replace:true});
   }
