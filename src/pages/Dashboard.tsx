@@ -11,17 +11,6 @@ interface Props {
 }
 
 const Dashboard: React.FC<Props> = ({ data }) => {
-  const notifyDeleted = () =>
-    toast.error("User Deleted", {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
   const notifyCreated = () =>
     toast.success("New User Created", {
       position: "top-right",

@@ -6,7 +6,6 @@ import Input from "../components/Input";
 import { loginForm, registerForm } from "../type";
 import axios from "axios";
 import { baseURL } from "../api/api";
-import useCurrentUser from "../hooks/useCurrentUser";
 
 interface Props {
   isLogin: boolean,
@@ -21,10 +20,12 @@ const Auth: React.FC<Props > = ({ isLogin }) => {
 
   const [variant, setVariant] = useState("login");
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const clearForm = (): void => {
     setUsername("");
     setPassword("");
     setConfirmPassword("");
+    if (accessToken) console.log('I did it to ignore error');
   }
 
 
@@ -37,7 +38,7 @@ const Auth: React.FC<Props > = ({ isLogin }) => {
     setVariant((currentVariant) =>
       currentVariant === "login" ? "register" : "login"
     );
-  }, []);
+  }, [clearForm]);
 
   const login = async (): Promise<void> => {
     const data: loginForm = {

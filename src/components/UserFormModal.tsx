@@ -60,9 +60,11 @@ const UserFormModal: React.FC<Props> = ({ row, toast }) => {
             headers: { Authorization: "Bearer " + token },
           }
         );
-        props.setOpenModal(undefined);
-        mutate();
-        toast();
+        if (response.status == 200) {
+            props.setOpenModal(undefined);
+            mutate();
+            toast();
+        }
       } catch (err) {
         const error = err as any;
         setError(error.response?.data?.message);
@@ -86,9 +88,11 @@ const UserFormModal: React.FC<Props> = ({ row, toast }) => {
             headers: { Authorization: "Bearer " + token },
           }
         );
-        props.setOpenModal(undefined);
-        mutate();
-        toast();
+        if (response.status == 200) {
+            props.setOpenModal(undefined);
+            mutate();
+            toast();
+        }
       } catch (err) {
         const error = err as any;
         setError(error.response?.data?.message);
