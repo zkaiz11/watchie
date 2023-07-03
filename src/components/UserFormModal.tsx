@@ -80,6 +80,7 @@ const UserFormModal: React.FC<Props> = ({ row, toast }) => {
         balance: data.balance,
       };
       try {
+        console.log('start')
         const response = await axios.post(
           `${baseURL}/users/addnewuser`,
           req_body,
@@ -89,12 +90,16 @@ const UserFormModal: React.FC<Props> = ({ row, toast }) => {
         );
         props.setOpenModal(undefined);
         mutate();
-        toast();
         console.log(response.status)
+        toast();
       } catch (err) {
+        console.log('get err')
         const error = err as any;
         setError(error.response?.data?.message);
         console.log(error);
+        mutate();
+        toast();
+        props.setOpenModal(undefined);
       }
     }
   };
